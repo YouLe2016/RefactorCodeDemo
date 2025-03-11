@@ -5,8 +5,11 @@ import org.junit.jupiter.api.Test
 class SubstituteAlgorithmExampleTest {
     @Test
     fun findPersonReturnTom() {
+        // given
         val people = arrayOf("Tom", "Jerry", "Spike")
+        // when
         val result = SubstituteAlgorithmExample().findPerson(people)
+        // then
         assert(result == "Tom")
     }
 
