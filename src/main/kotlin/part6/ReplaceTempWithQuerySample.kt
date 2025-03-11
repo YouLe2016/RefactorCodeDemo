@@ -1,8 +1,8 @@
 package part6
 
 class ReplaceTempWithQuerySample() {
-    private var quantity: Int = 0
-    private var itemPrice: Int = 0
+    var quantity: Int = 0
+    var itemPrice: Int = 0
 
     fun calcPrice(): Double {
         val basePrice = calcBasePrice()
@@ -22,13 +22,14 @@ class ReplaceTempWithQuerySample() {
         println("basePrice: $result")
         return result
     }
+}
 
-    fun run() {
-        quantity = 600
-        itemPrice = 2
-        calcPrice()
-        quantity = 400
-        itemPrice = 2
-        calcPrice()
-    }
+fun run() {
+    val sample = ReplaceTempWithQuerySample()
+    sample.quantity = 600
+    sample.itemPrice = 2
+    sample.calcPrice()
+    sample.quantity = 400
+    sample.itemPrice = 2
+    sample.calcPrice()
 }

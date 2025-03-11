@@ -1,6 +1,5 @@
-import part6.ReplaceTempWithQuerySample
+import part6.run as part6Run
 
 fun main() {
-    val sample = ReplaceTempWithQuerySample()
-    sample.run()
+    part6Run()
 }
