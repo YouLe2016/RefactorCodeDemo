@@ -1,9 +1,11 @@
 package part7
 
-import part7.movefield.AccountType_Senior
+const val AccountType_Senior = 1
+const val AccountType_Normal = AccountType_Senior + 1
 
 class AccountType(
-    private val type: Int
+    private val type: Int,
+    var interestRate: Double
 ) {
     fun isPremium(): Boolean {
         return type == AccountType_Senior
