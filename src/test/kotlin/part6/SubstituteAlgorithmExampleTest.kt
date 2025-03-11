@@ -31,4 +31,10 @@ class SubstituteAlgorithmExampleTest {
         assert(result == "Tim")
     }
 
+    @Test
+    fun findPersonReturnLi() {
+        val people = arrayOf("Li")
+        val result = SubstituteAlgorithmExample().findPerson(people)
+        assert(result == "Li")
+    }
 }
