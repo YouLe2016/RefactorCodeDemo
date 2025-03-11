@@ -1,12 +1,33 @@
 package part6
 
-class ReplaceTempWithQuerySample {
+class ReplaceTempWithQuerySample() {
     private var quantity: Int = 0
     private var itemPrice: Int = 0
 
     fun calcPrice(): Double {
-        val basePrice = quantity * itemPrice
-        val discountFactor = if (basePrice > 1000) 0.95 else 0.98
-        return basePrice * discountFactor
+        val result = calcBasePrice() * calcFactor()
+        println("price: $result")
+        return result
+    }
+
+    private fun calcFactor(): Double {
+        val result = if (calcBasePrice() > 1000) 0.8 else 0.9
+        println("factor: $result")
+        return result
+    }
+
+    private fun calcBasePrice(): Int {
+        val result = quantity * itemPrice
+        println("basePrice: $result")
+        return result
+    }
+
+    fun run() {
+        quantity = 600
+        itemPrice = 2
+        calcPrice()
+        quantity = 400
+        itemPrice = 2
+        calcPrice()
     }
 }
