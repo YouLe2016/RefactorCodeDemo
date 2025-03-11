@@ -5,13 +5,14 @@ class ReplaceTempWithQuerySample() {
     private var itemPrice: Int = 0
 
     fun calcPrice(): Double {
-        val result = calcBasePrice() * calcFactor()
+        val basePrice = calcBasePrice()
+        val result = basePrice * calcFactor(basePrice)
         println("price: $result")
         return result
     }
 
-    private fun calcFactor(): Double {
-        val result = if (calcBasePrice() > 1000) 0.8 else 0.9
+    private fun calcFactor(basePrice: Int): Double {
+        val result = if (basePrice > 1000) 0.8 else 0.9
         println("factor: $result")
         return result
     }
