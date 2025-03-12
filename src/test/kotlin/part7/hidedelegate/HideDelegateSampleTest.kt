@@ -13,11 +13,15 @@ class HideDelegateSampleTest {
 
     @Test
     fun getDepartmentName() {
+        assertEquals(person.managerName, "")
         // given
-        person.department = Department(Person("老白"))
-        // when
-        val name = person.department?.manager?.name
+        val department = Department()
+        person.department = Department()
         // then
-        assertEquals(name, "老白")
+        assertEquals(person.managerName, "")
+        // given
+        department.manager = Person("老白")
+        // then
+        assertEquals(person.managerName, "老白")
     }
 }
