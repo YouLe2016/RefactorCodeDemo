@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 class PersonTest {
-    private val person = Person("李白")
+    private val person = Person("李白", TelephoneNumber())
 
     @Test
     fun getTelephoneNumber() {
@@ -12,17 +12,17 @@ class PersonTest {
         assertEquals("", person.telephoneNumber)
 
         // given
-        person.setOfficeNumber("5889110")
+        person.phoneNumber.setNumber("5889110")
         // then
         assertEquals("5889110", person.telephoneNumber)
 
         // given
-        person.setOfficeAreaCode("010")
+        person.phoneNumber.setAreaCode("010")
         // then
         assertEquals("(010)5889110", person.telephoneNumber)
 
         // given
-        person.setOfficeNumber("")
+        person.phoneNumber.setNumber("")
         // then
         assertEquals("(010)", person.telephoneNumber)
     }
