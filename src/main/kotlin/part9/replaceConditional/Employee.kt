@@ -8,15 +8,9 @@ class Employee(
     val monthlySalary: Int,
     val commission: Int = 0,
     val bonus: Int = 0,
-    val type: Int = EmployeeType_Engineer
+    val type: EmployeeType = EmployeeType.Engineer
 ) {
     fun calcPayAmount(): Int {
-        val default = monthlySalary
-        return when (type) {
-            EmployeeType_SalesMan -> monthlySalary + commission
-            EmployeeType_Manger -> monthlySalary + bonus
-            EmployeeType_Engineer -> default
-            else -> default
-        }
+        return type.calcPayAmount(this)
     }
 }
