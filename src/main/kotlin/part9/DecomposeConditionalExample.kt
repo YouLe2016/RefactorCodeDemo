@@ -15,10 +15,16 @@ class DecomposeConditionalExample {
         summerRate: Double,
         winterServiceCharge: Double
     ): Double {
-        return if (date.before(SUMMER_START) || date.after(SUMMER_END)) {
-            quantity * winterRate + winterServiceCharge
+        return if (isNotSummer(date)) {
+            calcWinterCharge(quantity, winterRate, winterServiceCharge)
         } else {
-            quantity * summerRate
+            calcSummerCharge(quantity, summerRate)
         }
     }
+    private fun calcWinterCharge(quantity: Int, winterRate: Double, winterServiceCharge: Double): Double =
+        calcSummerCharge(quantity, winterRate) + winterServiceCharge
+
+    private fun calcSummerCharge(quantity: Int, summerRate: Double): Double = quantity * summerRate
+
+    private fun isNotSummer(date: Date): Boolean = date.before(SUMMER_START) || date.after(SUMMER_END)
 }
