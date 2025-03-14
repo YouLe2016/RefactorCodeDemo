@@ -1,17 +1,17 @@
 package part9.introduceNullObj
 
 class Site {
-    var customer: Customer? = null
+    var customer: Customer = NullCustomer
 
     fun state(): String {
-        var plan = BillingPlanFactory.getBase()
-        var name = "occupant"
-        var weeksDelinquent = 0
-        customer?.let {
-            plan = it.plant
-            name = it.name
-            weeksDelinquent = it.history.weeksDelinquent
-        }
-        return "name: $name, plan: ${plan.name}, weeksDelinquent: $weeksDelinquent"
+        return "name: ${customer.name}, plan: ${customer.plant.name}, weeksDelinquent: ${customer.history.weeksDelinquent}"
     }
 }
+
+private object NullPaymentHistory : PaymentHistory(0)
+
+private object NullCustomer : Customer(
+    name = "occupant",
+    plant = BillingPlanFactory.getBase(),
+    history = NullPaymentHistory
+)
