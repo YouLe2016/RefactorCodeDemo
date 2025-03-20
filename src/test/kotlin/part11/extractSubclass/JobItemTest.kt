@@ -5,14 +5,9 @@ import org.junit.jupiter.api.Test
 
 class JobItemTest {
     @Test
-    fun calculateTotalIsLabor() {
+    fun calculateTotalIsNotLabor() {
         // given
-        val jobItem = JobItem(
-            unitPrice = 100,
-            quantity = 2,
-            employee = null,
-            isLabor = false
-        )
+        val jobItem = UnitJobItem(price = 100, quantity = 2)
         // when
         val result = jobItem.calculateTotal()
         // then
@@ -20,14 +15,9 @@ class JobItemTest {
     }
 
     @Test
-    fun calculateTotalIsNotLabor() {
+    fun calculateTotalIsLabor() {
         // given
-        val jobItem = JobItem(
-            unitPrice = 100,
-            quantity = 2,
-            employee = Employee(rate = 200),
-            isLabor = true
-        )
+        val jobItem = LaborJobItem(quantity = 2, employee = Employee(rate = 200))
         // when
         val result = jobItem.calculateTotal()
         // then
